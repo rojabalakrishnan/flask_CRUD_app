@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>New Post</title> 
+{% endblock %}
+
+{% block body %}
+<h1>New Post</h1>
+
+    <hr>
+    <h2>Create New Blog Post:</h2>
+    <form action='/posts' method='POST'>
+       <label for="title">Job Title: </label>
+        <input type='text' class="form-control" name='title' aria-label="Enter Title" id='title'>
+        <br>
+        <label for="Description">Job Description: </label>
+        <textarea class="form-control" class="form-control" aria-label="Enter description" rows="3" name='description'
+                  id='description'></textarea>
+        <br>
+        <label for="PayperHour">Pay per Hour:</label>
+        <input type='text' class="form-control" class="form-control" aria-label="Enter pay" name='pay_per_hour'
+               id='pay_per_hour'>
+        <br>
+        <label for="ExpiryDate">Job Expiry Date:</label>
+
+
+        <input type="datetime-local" placeholder='YYYY-MM-DD HH:MM' class="form-control" name='expiry_date'
+               id='expiry_date'>
+        <br>
+        <input type='submit' value='Post'>
+    </form>
+    <hr>
+{% endblock %}
