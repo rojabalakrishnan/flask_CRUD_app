@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Job Posts</title>
+{% endblock %}
+
+{% block body %}
+
+
+    <hr>
+    <h2>Create New Job Blog Post:</h2>
+    <form action='/posts' method='POST'>
+        TITLE: <input type='text' name='title' id='title'>
+        <br>
+        JOB_DESCRIPTION: <input type='text' name='description' id='description'>
+        <br>
+        PAY_PER_HOUR: <input type='text' name='pay_per_hour' id='pay_per_hour'>
+         <br>
+        EXPIRY_DATE: <input type="datetime-local" id="expiry_date"
+       name="expiry_date" >
+
+        <br>
+        <input type='submit' value='Post'>
+    </form>
+    <hr>
+<h1>All Job Posts</h1>
+    {% for job_post in job_posts %}
+        <h3>JOB_TITLE:</h3> {{ job_post.title }}
+
+        {% if job_post.description %}
+            <h3>JOB_DESCRIPTION:</h3>{{ job_post.description }}
+        {% else %}
+            <h3>JOB_DESCRIPTION:</h3> N/A
+        {% endif %}
+        
+        <h3> PAY_PER_HOUR: </h3> {{ job_post.pay_per_hour}}
+        <h3> JOB EXPIRY DATE:</h3> {{ job_post.expiry_date}}
+        <hr>
+
+        <a href='/posts/delete/{{job_post.id}}'>Delete</a>
+        <a href='/posts/edit/{{job_post.id}}'>Edit</a>
+        <hr>
+    {% endfor%}
+
+{% endblock %}
