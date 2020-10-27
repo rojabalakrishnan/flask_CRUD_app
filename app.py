@@ -53,14 +53,13 @@ def delete(id):
 @app.route('/posts/edit/<int:id>', methods=['GET', 'POST'])
 def edit(id):
     job_post = JobPost.query.get_or_404(id)
-
     if request.method == 'POST':
         job_post.title = request.form['title']
         job_post.description = request.form['description']
         job_post.pay_per_hour = request.form['pay_per_hour']
-        expiry_date = request.form['expiry_date']
+        expiry_date = request.form['expiry_date1']
         expiry_date_old = expiry_date.replace('T', ' ')
-        expiry_date_new = datetime.strptime(expiry_date_old, '%Y-%m-%d %H:%M:%S')
+        expiry_date_new = datetime.strptime(expiry_date_old, '%Y-%m-%d %H:%M')
 
         job_post.expiry_date = expiry_date_new
         db.session.commit()
