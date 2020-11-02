@@ -58,6 +58,7 @@ def edit(id):
         job_post.description = request.form['description']
         job_post.pay_per_hour = request.form['pay_per_hour']
         expiry_date = request.form['expiry_date1']
+
         expiry_date_old = expiry_date.replace('T', ' ')
         expiry_date_new = datetime.strptime(expiry_date_old, '%Y-%m-%d %H:%M')
 

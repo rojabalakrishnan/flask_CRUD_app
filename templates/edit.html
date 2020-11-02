@@ -26,7 +26,7 @@
 
         <input type="text" hidden id='expiry_date' value="{{ job_post.expiry_date }}">
         <input type="datetime-local" placeholder='YYYY-MM-DD HH:MM' class="form-control" name='expiry_date1'
-               id='expiry_date1' value="{{ job_post.expiry_date }}">
+               id='expiry_date1'>
         <br>
         <input type='submit' value='Save'>
     </form>
@@ -40,7 +40,9 @@
         var elem = document.getElementById("expiry_date");
         var temp = elem.value;
         var d = new Date(new Date(temp).toString().split('GMT')[0] + ' UTC').toISOString().split('.')[0];
+        var splittedString=d.split(":");
+        date=splittedString.slice(0,-1).join(':');
         var elem1 = document.getElementById("expiry_date1");
-        elem1.value = d;
+        elem1.value = date;
     </script>
 {% endblock %}
